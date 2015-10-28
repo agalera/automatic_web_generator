@@ -56,7 +56,7 @@ class Generate:
             totemplate['repos'][repo['name']] = x
 
         f = open('index.html', 'wb')
-        f.write(draw_template('index.tpl', totemplate))
+        f.write(draw_template('index.tpl', totemplate).encode("utf-8"))
         f.close()
 
     def generate_specific_pages(self):
@@ -76,8 +76,8 @@ class Generate:
                 html_readme = "not exist readme"
             totemplate['repo']['html'] = html_readme
             f = open('repos/%s.html' % repo['name'], 'wb')
-            f.write(draw_template('repo.tpl', totemplate))
+            f.write(draw_template('repo.tpl', totemplate).encode("utf-8"))
             f.close()
 g = Generate()
-g.generate_main_page()
+# g.generate_main_page()
 g.generate_specific_pages()
