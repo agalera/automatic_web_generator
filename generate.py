@@ -79,5 +79,5 @@ class Generate:
             f.write(draw_template('repo.tpl', totemplate).encode("utf-8"))
             f.close()
 g = Generate()
-# g.generate_main_page()
+g.generate_main_page()
 g.generate_specific_pages()
