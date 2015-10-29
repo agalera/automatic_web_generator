@@ -2,8 +2,10 @@ import requests
 from markdown import markdown
 import base64
 from jinja2 import Environment, FileSystemLoader, FileSystemBytecodeCache
+import settings
 
-bcc = FileSystemBytecodeCache("/tmp", '%s.cache')
+
+bcc = FileSystemBytecodeCache(settings.jinjacache, '%s.cache')
 jinja2_env = Environment(
     loader=FileSystemLoader('templates/'), bytecode_cache=bcc)
 
@@ -16,16 +18,14 @@ def draw_template(name, totemplate):
 class Generate:
 
     def __init__(self):
-        self.username = "kianxineki"
-        self.api = "https://api.github.com/"
-        self.auth = ('kianxineki',
-                     base64.decodestring('fakepassword=\n'))
+        self.username = settings.username
+        self.api = settings.api
         self.info = requests.get("%susers/%s" % (self.api,
                                                  self.username)).json()
-        self.repos = requests.get("%susers/kianxineki/repos" % self.api).json()
+        self.repos = requests.get("%susers/%s/repos" % (self.api,
+                                                        self.username)).json()
         if len(self.info) == 2:
-            print self.info['message']
-            exit("max ratelimit")
+            exit(self.info['message'])
 
     def get_info(self):
         tmp = {}
