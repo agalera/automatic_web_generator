@@ -2,12 +2,13 @@ import requests
 from markdown import markdown
 import base64
 from jinja2 import Environment, FileSystemLoader, FileSystemBytecodeCache
-import settings
+from json import load
 
 
+settings = load(open('settings.json'))
 bcc = FileSystemBytecodeCache(settings.jinjacache, '%s.cache')
 jinja2_env = Environment(
-    loader=FileSystemLoader('templates/'), bytecode_cache=bcc)
+    loader=FileSystemLoader(settings['template']), bytecode_cache=bcc)
 
 
 def draw_template(name, totemplate):
@@ -52,8 +53,8 @@ class Generate:
         totemplate['info'] = self.get_info()
 
         for repo in self.repos:
-            x = self.get_params_repo(repo, ['name', 'html_url', 'description'])
-            totemplate['repos'][repo['name']] = x
+            # x = self.get_params_repo(repo, ['name', 'html_url', 'description'])
+            totemplate['repos'][repo['name']] = repo
         f = open('index.html', 'wb')
         f.write(draw_template('index.tpl', totemplate).encode("utf-8"))
         f.close()
@@ -62,8 +63,8 @@ class Generate:
         totemplate = {'info': {}}
         totemplate['info'] = self.get_info()
         for repo in self.repos:
-            x = self.get_params_repo(repo, ['name', 'html_url', 'description'])
-            totemplate['repo'] = x
+            # x = self.get_params_repo(repo, ['name', 'html_url', 'description'])
+            totemplate['repo'] = repo
             r = requests.get("%srepos/%s/%s/readme" % (self.api,
                                                        self.username,
                                                        repo['name']))
@@ -77,6 +78,9 @@ class Generate:
             f = open('repos/%s.html' % repo['name'], 'wb')
             f.write(draw_template('repo.tpl', totemplate).encode("utf-8"))
             f.close()
-g = Generate()
-g.generate_main_page()
-# g.generate_specific_pages()
+
+
+if __name__ == "__main__":
+    g = Generate()
+    g.generate_main_page()
+    g.generate_specific_pages()

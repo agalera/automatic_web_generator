@@ -1,0 +1,6 @@
+{
+    "username": "kianxineki",
+    "api": "https://api.github.com/",
+    "jinjacache": "/tmp",
+    "template": "default_template/"
+}
