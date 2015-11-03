@@ -41,7 +41,7 @@ class Generate:
         for param in params:
             if repo[param]:
                 try:
-                    result[param] = self.info[param]
+                    result[param] = repo[param]
                 except:
                     result[param] = None
         return result
@@ -54,7 +54,6 @@ class Generate:
         for repo in self.repos:
             x = self.get_params_repo(repo, ['name', 'html_url', 'description'])
             totemplate['repos'][repo['name']] = x
-
         f = open('index.html', 'wb')
         f.write(draw_template('index.tpl', totemplate).encode("utf-8"))
         f.close()
@@ -80,4 +79,4 @@ class Generate:
             f.close()
 g = Generate()
 g.generate_main_page()
-g.generate_specific_pages()
+# g.generate_specific_pages()

@@ -1,8 +1,7 @@
 {% include 'header.tpl' %}
-    {body}
     {% for repo in repos %}
-        {{repo.name}}
-        {{repo.html_url}}
-        {{repo.description}}
+        <a href="repos/{{repos[repo].name}}">{{repos[repo].name}}</a><br />
+        {{repos[repo].description}}<br />
+        <br />
     {% endfor %}
 {% include 'footer.tpl' %}

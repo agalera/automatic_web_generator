@@ -1,6 +1,6 @@
 {% include 'header.tpl' %}
-    {{repo.name}}
-    {{repo.html_url}}
-    {{repo.description}}
-    {{repo.html}}
+    <a href="{{repo.html_url}}">{{repo.name}}</a><br />
+    {{repo.description}}<br />
+    {{repo.html}}<br />
+    <br />
 {% include 'footer.tpl' %}
