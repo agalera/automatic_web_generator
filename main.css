@@ -1,0 +1,40 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
+html{
+  padding:0px;
+  margin:0px;
+}
+a img{
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+  vertical-align:bottom;
+}
+img {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+  vertical-align:bottom;
+}
+body{
+  margin: 0px;
+  padding: 0px;
+  font-size:13px;
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
+  padding: 20px;
+}
+#header {position: relative;
+         clear: both;
+         overflow:hidden}
+#avatar_url {float: left;
+             width: 100px;
+             height: 100px;}
+#header_text {float: left;
+              padding-left: 10px;}
+#body {clear: both;
+       margin-top: 20px;}
+#footer { text-align: center;
+         clear: both}
+h1 {font-size: 18px;
+    margin-top: 0px;
+    padding-top: 0px;}

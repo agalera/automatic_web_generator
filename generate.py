@@ -6,7 +6,7 @@ from json import load
 
 
 settings = load(open('settings.json'))
-bcc = FileSystemBytecodeCache(settings.jinjacache, '%s.cache')
+bcc = FileSystemBytecodeCache(settings['jinjacache'], '%s.cache')
 jinja2_env = Environment(
     loader=FileSystemLoader(settings['template']), bytecode_cache=bcc)
 
@@ -19,8 +19,8 @@ def draw_template(name, totemplate):
 class Generate:
 
     def __init__(self):
-        self.username = settings.username
-        self.api = settings.api
+        self.username = settings['username']
+        self.api = settings['api']
         self.info = requests.get("%susers/%s" % (self.api,
                                                  self.username)).json()
         self.repos = requests.get("%susers/%s/repos" % (self.api,
@@ -82,5 +82,9 @@ class Generate:
 
 if __name__ == "__main__":
     g = Generate()
+    # import time
+    # while True:
+    #    time.sleep(30)
+    #    g.generate_main_page()
     g.generate_main_page()
     g.generate_specific_pages()
