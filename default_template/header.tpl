@@ -1,7 +1,7 @@
 <html>
     <head>
         <!-- load css -->
-        <link rel="stylesheet" type="text/css" href="main.css">
+        <link rel="stylesheet" type="text/css" href="/main.css">
     </head>
     <body>
         <div id="header">
