@@ -1,5 +1,4 @@
 import requests
-from markdown import markdown
 import base64
 from jinja2 import Environment, FileSystemLoader, FileSystemBytecodeCache
 from json import load
@@ -65,13 +64,14 @@ class Generate:
         for repo in self.repos:
             # x = self.get_params_repo(repo, ['name', 'html_url', 'description'])
             totemplate['repo'] = repo
+            headers = {'content-type': 'application/vnd.github.v3.html'}
             r = requests.get("%srepos/%s/%s/readme" % (self.api,
                                                        self.username,
-                                                       repo['name']))
-            r = r.json()
-            if "content" in r:
-                s = unicode(base64.decodestring(r['content']), "utf-8")
-                html_readme = markdown(s)
+                                                       repo['name']),
+                             headers=headers).json()
+
+            if "html" in r:
+                html_readme = requests.get(r['html']).text
             else:
                 html_readme = "not exist readme"
             totemplate['repo']['html'] = html_readme
