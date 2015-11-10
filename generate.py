@@ -69,9 +69,9 @@ class Generate:
                                                        self.username,
                                                        repo['name']),
                              headers=headers).json()
-
-            if "html" in r:
-                html_readme = requests.get(r['html']).text
+            
+            if '_links' in r and 'html' in r['_links']:
+                html_readme = requests.get(r['_links']['html']).text
             else:
                 html_readme = "not exist readme"
             totemplate['repo']['html'] = html_readme
