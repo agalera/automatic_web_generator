@@ -1,7 +1,21 @@
 import requests
 from jinja2 import Environment, FileSystemLoader, FileSystemBytecodeCache
 from json import load
+from os import makedirs
+from os.path import dirname, isfile, exists
+import shutil
 
+if not exists('repos'):
+        makedirs('repos')
+
+if not isfile('settings.json'):
+    origin = dirname(__file__)
+    for f in ['main.css', 'settings.json']:
+        shutil.copy(origin + "/" + f, f)
+
+    for f in ['default_template']:
+        shutil.copytree(origin + "/" + f, f)
+    exit("generate base ok, edit settings.json")
 
 settings = load(open('settings.json'))
 bcc = FileSystemBytecodeCache(settings['jinjacache'], '%s.cache')
