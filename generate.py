@@ -64,16 +64,16 @@ class Generate:
         for repo in self.repos:
             # x = self.get_params_repo(repo, ['name', 'html_url', 'description'])
             totemplate['repo'] = repo
-            headers = {'content-type': 'application/vnd.github.v3.html'}
+            headers = {'Accept': 'application/vnd.github.v3.html'}
             r = requests.get("%srepos/%s/%s/readme" % (self.api,
                                                        self.username,
                                                        repo['name']),
-                             headers=headers).json()
-            
-            if '_links' in r and 'html' in r['_links']:
-                html_readme = requests.get(r['_links']['html']).text
+                              headers=headers)
+            if r.ok:
+                html_readme = r.text
             else:
-                html_readme = "not exist readme"
+                html_readme = ""
+            
             totemplate['repo']['html'] = html_readme
             f = open('repos/%s.html' % repo['name'], 'wb')
             f.write(draw_template('repo.tpl', totemplate).encode("utf-8"))
