@@ -38,6 +38,7 @@ class Generate:
         self.api = settings['api']
         self.kwargs = {}
         if 'GH-TOKEN' in os.environ:
+            print "usign token"
             self.kwargs = {'headers': {'Authorization': 'token os.environ["GH-TOKEN"]'}}
         else:
             print "dont use token"
