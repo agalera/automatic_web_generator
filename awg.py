@@ -39,7 +39,7 @@ class Generate:
         self.repos = requests.get("%susers/%s/repos" % (self.api,
                                                         self.username)).json()
         if len(self.info) == 2:
-            exit(self.info['message'])
+            exit(self.info['message'])  # pragma: no cover
 
     def get_info(self):
         tmp = {}
@@ -49,16 +49,6 @@ class Generate:
 
             tmp[param] = self.info[param]
         return tmp
-
-    def get_params_repo(self, repo, params):
-        result = {}
-        for param in params:
-            if repo[param]:
-                try:
-                    result[param] = repo[param]
-                except:
-                    result[param] = None
-        return result
 
     def generate_main_page(self):
         totemplate = {'info': {}, 'repos': {}}
