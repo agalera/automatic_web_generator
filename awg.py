@@ -11,7 +11,7 @@ if not exists('repos'):
 if not isfile('settings.json'):
     origin = dirname(__file__)+ "/" + "awg-data" + "/"
     if not exists('main.css'):
-        shutil.copy(origin + 'main.json', 'main.json')
+        shutil.copy(origin + 'main.css', 'main.css')
     if not exists('settings.json'):
         shutil.copy(origin + 'settings.json', 'settings.json')
     if not exists('default_template'):
