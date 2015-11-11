@@ -4,7 +4,6 @@ from json import load
 from os import makedirs
 from os.path import dirname, isfile, exists
 import shutil
-import sys
 
 
 if not exists('repos'):
@@ -34,17 +33,18 @@ def draw_template(name, totemplate):
 class Generate:
 
     def __init__(self):
+        print sys.argv
         self.username = settings['username']
         self.api = settings['api']
         self.kwargs = {}
-        if len(sys.argv) == 3:
-            self.kwargs = {'auth': (sys.argv[1], sys.argv[2])}
+        if 'GH-TOKEN' in os.environ:
+            self.kwargs = {'auth': (self.username, os.environ['GH-TOKEN'])}
         self.info = requests.get("%susers/%s" % (self.api,
                                                  self.username),
-                                 **kwargs).json()
+                                 **self.kwargs).json()
         self.repos = requests.get("%susers/%s/repos" % (self.api,
                                                         self.username),
-                                  **kwargs).json()
+                                  **self.kwargs).json()
         if len(self.info) == 2:
             exit(self.info['message'])  # pragma: no cover
 
