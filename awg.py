@@ -9,12 +9,12 @@ if not exists('repos'):
         makedirs('repos')
 
 if not isfile('settings.json'):
-    origin = dirname(__file__)
+    origin = dirname(__file__)+ "/" + "awg" + "/"
     for f in ['main.css', 'settings.json']:
-        shutil.copy(origin + "/" + f, f)
+        shutil.copy(origin + f, f)
 
     for f in ['default_template']:
-        shutil.copytree(origin + "/" + f, f)
+        shutil.copytree(origin + f, f)
     exit("generate base ok, edit settings.json")
 
 settings = load(open('settings.json'))

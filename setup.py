@@ -22,13 +22,18 @@ if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
     sys.exit()
 
-readme = read_md('README.md')
-changelog = read_md('CHANGELOG.md')
-
+try:
+    readme = read_md('README.md')
+except:
+    readme = ""
+try:
+    changelog = read_md('CHANGELOG.md')
+except:
+    changelog = ""
 
 setup(
     name='awg',
-    version='0.0.2',
+    version='0.0.10',
     description='automatic web generator',
     long_description=readme+'\n\n'+changelog,
     author='Alberto Galera Jimenez',
@@ -36,13 +41,14 @@ setup(
     url='https://github.com/kianxineki/automatic_web_generator',
     py_modules=['awg'],
     include_package_data=True,
-    install_requires=['requests'],
-    data_files=[('', ['main.css', 'settings.json', 'README.md',
-                      'CHANGELOG.md']),
-                ('default_template', ['default_template/header.tpl',
-                                      'default_template/index.tpl',
-                                      'default_template/repo.tpl',
-                                      'default_template/footer.tpl'])],
+    install_requires=['requests','jinja2'],
+    packages=['awg'],
+    package_dir={'awg': 'data'},
+    package_data={'awg': ['data/main.css', 'data/settings.json'],
+                  'awg': ['data/default_template/header.tpl',
+                          'data/default_template/index.tpl',
+                          'data/default_template/repo.tpl',
+                          'data/default_template/footer.tpl']},
     license="GPL",
     zip_safe=False,
     keywords='awg',
