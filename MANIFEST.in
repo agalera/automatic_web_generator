@@ -1,0 +1,3 @@
+include main.css
+include settings.json
+recursive-include default_template *.tpl
