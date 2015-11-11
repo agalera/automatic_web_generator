@@ -80,7 +80,7 @@ class Generate:
             # x = self.get_params_repo(repo, ['name', 'html_url', 'description'])
             totemplate['repo'] = repo
             if self.kwargs != {}:
-                self.kwargs['headers]['Accept'] =  'application/vnd.github.v3.html'
+                self.kwargs['headers']['Accept'] =  'application/vnd.github.v3.html'
             else:
                 self.kwargs['headers'] = {'Accept': 'application/vnd.github.v3.html'}
             r = requests.get("%srepos/%s/%s/readme" % (self.api,
