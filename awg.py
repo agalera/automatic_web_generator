@@ -39,7 +39,7 @@ class Generate:
         self.kwargs = {}
         if 'GH_TOKEN' in os.environ:
             print "usign token"
-            self.kwargs = {'headers': {'Authorization': 'token os.environ["GH_TOKEN"]'}}
+            self.kwargs = {'headers': {'Authorization': 'token ' + os.environ["GH_TOKEN"]}}
         else:
             print "dont use token"
 
