@@ -34,7 +34,6 @@ def draw_template(name, totemplate):
 class Generate:
 
     def __init__(self):
-        print sys.argv
         self.username = settings['username']
         self.api = settings['api']
         self.kwargs = {}
