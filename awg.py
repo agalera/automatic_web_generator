@@ -1,4 +1,5 @@
 import requests
+import os
 from jinja2 import Environment, FileSystemLoader, FileSystemBytecodeCache
 from json import load
 from os import makedirs
