@@ -38,7 +38,7 @@ class Generate:
         self.api = settings['api']
         self.kwargs = {}
         if 'GH-TOKEN' in os.environ:
-            self.kwargs = {'auth': (self.username, os.environ['GH-TOKEN'])}
+            self.kwargs = {'headers': {'Authorization': 'token os.environ["GH-TOKEN"]'}}
         self.info = requests.get("%susers/%s" % (self.api,
                                                  self.username),
                                  **self.kwargs).json()
