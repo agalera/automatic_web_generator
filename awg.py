@@ -102,4 +102,4 @@ def generate():
     g.generate_specific_pages()
 
 if __name__ == "__main__":
-    generate()
+    generate()  # pragma: no cover
