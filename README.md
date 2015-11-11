@@ -1,4 +1,9 @@
 [![PypiDownloads](https://img.shields.io/pypi/dm/awg.svg)](https://pypi.python.org/pypi/awg)
+[![pythonversions](https://img.shields.io/pypi/pyversions/awg.svg)](https://pypi.python.org/pypi/awg)
+[![Code Climate](https://img.shields.io/codeclimate/github/kianxineki/awg.svg)](https://codeclimate.com/github/kianxineki/awg)
+[![Codecov](https://img.shields.io/codecov/c/github/kianxineki/awg.svg)](https://codecov.io/github/kianxineki/awg)
+[![Travis](https://img.shields.io/travis/kianxineki/awg.svg)](https://travis-ci.org/kianxineki/awg)
+
 # AWG
 Automatic web generator
 
