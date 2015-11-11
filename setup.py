@@ -28,7 +28,7 @@ changelog = read_md('CHANGELOG.md')
 
 setup(
     name='awg',
-    version='0.0.1',
+    version='0.0.2',
     description='automatic web generator',
     long_description=readme+'\n\n'+changelog,
     author='Alberto Galera Jimenez',
@@ -61,7 +61,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'automatic_web_generator = awg:generate'
+            'awg = awg:generate'
         ]
     },
 )
