@@ -2,7 +2,7 @@ import requests
 from jinja2 import Environment, FileSystemLoader, FileSystemBytecodeCache
 from json import load
 
-import ipdb; ipdb.set_trace()
+
 settings = load(open('settings.json'))
 bcc = FileSystemBytecodeCache(settings['jinjacache'], '%s.cache')
 jinja2_env = Environment(
