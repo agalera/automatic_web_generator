@@ -1,2 +1,3 @@
-[![PypiDownloads](https://img.shields.io/pypi/dm/automatic_web_generator.svg)](https://pypi.python.org/pypi/automatic_web_generator)
+[![PypiDownloads](https://img.shields.io/pypi/dm/awg.svg)](https://pypi.python.org/pypi/awg)
+
 Automatic web generator
