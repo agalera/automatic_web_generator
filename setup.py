@@ -33,7 +33,7 @@ except:
 
 setup(
     name='awg',
-    version='0.0.10',
+    version='0.1.0',
     description='automatic web generator',
     long_description=readme+'\n\n'+changelog,
     author='Alberto Galera Jimenez',
