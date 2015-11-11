@@ -6,7 +6,7 @@ python:
   - 3.4
   - 3.5
 before-install:
-  - git config --global github.accesstoken $GITHUB_OAUTH_TOKEN
+  - git config --global github.accesstoken $GH_TOKEN
 
 install:
   - pip install codecov
