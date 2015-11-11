@@ -9,13 +9,14 @@ if not exists('repos'):
         makedirs('repos')
 
 if not isfile('settings.json'):
-    origin = dirname(__file__)+ "/" + "awg" + "/"
-    for f in ['main.css', 'settings.json']:
-        shutil.copy(origin + f, f)
-
-    for f in ['default_template']:
-        shutil.copytree(origin + f, f)
-    exit("generate base ok, edit settings.json")
+    origin = dirname(__file__)+ "/" + "awg-data" + "/"
+    if not exists('main.css'):
+        shutil.copy(origin + 'main.json', 'main.json')
+    if not exists('settings.json'):
+        shutil.copy(origin + 'settings.json', 'settings.json')
+    if not exists('default_template'):
+        for f in ['default_template']:
+            shutil.copytree(origin + f, f)
 
 settings = load(open('settings.json'))
 bcc = FileSystemBytecodeCache(settings['jinjacache'], '%s.cache')
