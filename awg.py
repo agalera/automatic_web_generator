@@ -86,7 +86,7 @@ class Generate:
             r = requests.get("%srepos/%s/%s/readme" % (self.api,
                                                        self.username,
                                                        repo['name']),
-                             headers=headers, **self.kwargs)
+                             **self.kwargs)
             if r.ok:
                 html_readme = r.text
             else:
