@@ -38,7 +38,7 @@ setup(
     long_description=readme+'\n\n'+changelog,
     author='Alberto Galera Jimenez',
     author_email='galerajimenez@gmail.com',
-    url='https://github.com/kianxineki/automatic_web_generator',
+    url='https://github.com/agalera/automatic_web_generator',
     py_modules=['awg'],
     include_package_data=True,
     install_requires=['requests','jinja2'],
